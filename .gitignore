@@ -1,0 +1,7 @@
+/.fleet
+/.idea
+/.vscode
+/.docker/mysql/
+/.docker/portainer/
+/docker/.env
+ult.cache

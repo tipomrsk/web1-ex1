@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+
+    app:
+        build:
+            context: .
+            dockerfile: ../app/Dockerfile
+        container_name: aula2_app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ../app:/var/www
+        networks:
+            - ifsul
+
+    nginx:
+        image: nginx:alpine
+        container_name: aula2_nginx
+        restart: unless-stopped
+        ports:
+            - "8989:80"
+        volumes:
+            - ../app/:/var/www
+            - ../nginx/:/etc/nginx/conf.d/
+        networks:
+            - ifsul
+
+networks:
+    ifsul:
+        driver: bridge
